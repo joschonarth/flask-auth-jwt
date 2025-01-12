@@ -11,10 +11,13 @@ def test_handle_balance_editor():
     body = {
         "new_balance": 500.75
     }
-    param = {
+    params = {
         "user_id": "12345"
     }
-    request = HttpRequest(body=body, params=param)
+    headers = {
+        "uid": "12345"
+    }
+    request = HttpRequest(body=body, params=params, headers=headers)
 
     mock_controller = MockController()
     balance_editor_view = BalanceEditorView(mock_controller)
@@ -27,10 +30,13 @@ def test_handle_balance_editor():
 
 def test_handle_balance_editor_with_missing_body():
     body = {}
-    param = {
+    params = {
         "user_id": "12345"
     }
-    request = HttpRequest(body=body, params=param)
+    headers = {
+        "uid": "12345"
+    }
+    request = HttpRequest(body=body, params=params, headers=headers)
 
     mock_controller = MockController()
     balance_editor_view = BalanceEditorView(mock_controller)
@@ -44,8 +50,11 @@ def test_handle_balance_editor_with_missing_param():
     body = {
         "new_balance": 500.75
     }
-    param = {}
-    request = HttpRequest(body=body, params=param)
+    params = {}
+    headers = {
+        "uid": "12345"
+    }
+    request = HttpRequest(body=body, params=params, headers=headers)
 
     mock_controller = MockController()
     balance_editor_view = BalanceEditorView(mock_controller)
@@ -59,10 +68,13 @@ def test_handle_balance_editor_with_invalid_balance_type():
     body = {
         "new_balance": "500.75"
     }
-    param = {
+    params = {
         "user_id": "12345"
     }
-    request = HttpRequest(body=body, params=param)
+    headers = {
+        "uid": "12345"
+    }
+    request = HttpRequest(body=body, params=params, headers=headers)
 
     mock_controller = MockController()
     balance_editor_view = BalanceEditorView(mock_controller)
