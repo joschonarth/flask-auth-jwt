@@ -37,3 +37,15 @@ class UserRepository(UserRepositoryInterface):
         )
         user = cursor.fetchone()
         return user
+
+    def get_user_by_id(self, user_id: int) -> tuple[int, str, float]:
+        cursor = self.__conn.cursor()
+        cursor.execute(
+            '''
+            SELECT id, username, balance
+            FROM users
+            WHERE id = ?
+            ''', (user_id,)
+        )
+        user = cursor.fetchone()
+        return user
